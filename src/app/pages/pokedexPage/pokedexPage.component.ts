@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PokedexService } from 'src/app/shared/services/PokedexService/pokedex.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/shared/models/pokemon.model';
 
 @Component({
@@ -8,14 +7,9 @@ import { Pokemon } from 'src/app/shared/models/pokemon.model';
   styleUrls: ['./pokedexPage.component.css'],
 })
 export class PokedexPageComponent implements OnInit {
-  pokemons: Pokemon[] = [];
-  constructor( public PokedexService: PokedexService ) {}
+  @Input() pokemons: Pokemon[] = [];
+  constructor( ) {}
 
   ngOnInit(): void {
-    this.PokedexService.getPokemon().subscribe(dataPokemons => {
-      this.pokemons = dataPokemons;
-      console.log(this.pokemons)
-    });
-
   }
 }
